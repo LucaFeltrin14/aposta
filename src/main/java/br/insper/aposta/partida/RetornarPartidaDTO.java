@@ -6,6 +6,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class RetornarPartidaDTO {
+    private Integer id;
     private String nomeMandante;
     private String nomeVisitante;
     private Integer placarMandante;

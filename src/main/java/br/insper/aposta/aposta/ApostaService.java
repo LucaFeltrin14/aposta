@@ -53,14 +53,11 @@ public class ApostaService {
     }
 
     @KafkaListener(topics = "partidas")
-    public void atuAposta(RetornarPartidaDTO partida) {
+    public void atuAposta(RetornarPartidaDTO partidaDTO) {
 
-    for (Aposta aposta : apostaRepository.findByIdPartida(partida.getId())){
+    for (Aposta aposta : apostaRepository.findByIdPartida(partidaDTO.getId())){
 
         if (!aposta.getStatus().equals("REALIZADA")) {
-
-            if (partida.getStatusCode().is2xxSuccessful()) {
-                RetornarPartidaDTO partidaDTO = partida.getBody();
 
                 if (partidaDTO.getStatus().equals("REALIZADA")) {
 
@@ -88,6 +85,6 @@ public class ApostaService {
                 throw new PartidaNaoEncontradaException("Partida não encontrada");
                 }
             }
-        }
+
     }
 }
