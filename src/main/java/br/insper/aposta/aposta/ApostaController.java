@@ -24,6 +24,7 @@ public class ApostaController {
 
     @GetMapping("/{idAposta}")
     public Aposta getAposta(@PathVariable String idAposta) {
+
         return apostaService.getAposta(idAposta);
     }
 }
