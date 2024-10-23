@@ -5,7 +5,7 @@ import './App.css'
 
 import { useKeycloak } from '@react-keycloak/web';
 import { Link, Route, Routes } from 'react-router-dom';
-import ListaTime from './time/ListaTime';
+import ListaTime from './time/ListarAposta';
 
 function App() {
   const { keycloak, initialized } = useKeycloak();
@@ -25,7 +25,7 @@ function App() {
       <div>
         <div>
           <div>
-            <Link to='/listaTimes'>Listar Times</Link>
+            <Link to='/ListarAposta'>Listar Apoasta</Link>
           </div>
           <div>  
             <button onClick={handleLogout}>Logout</button>
@@ -35,7 +35,7 @@ function App() {
         {keycloak.token}
 
         <Routes>
-          <Route path='/listaTimes' element={<ListaTime />} />
+          <Route path='/ListarAposta' element={<ListarAposta/>} />
         </Routes>
       </div>
 

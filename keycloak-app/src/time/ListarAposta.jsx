@@ -2,7 +2,7 @@ import { useKeycloak } from "@react-keycloak/web";
 import { useEffect, useState } from "react";
 
 
-function ListaTime() {
+function ListarAposta() {
 
     
     const { keycloak, initialized } = useKeycloak();
@@ -10,7 +10,7 @@ function ListaTime() {
 
     useEffect(() => {
         if (initialized && keycloak.authenticated) {
-          fetch('http://localhost:8080/time', {
+          fetch('http://localhost:8087/aposta', {
             method: 'GET',
             headers: {
               Authorization: `Bearer ${keycloak.token}`, // Adiciona o token ao cabeçalho
@@ -35,8 +35,13 @@ function ListaTime() {
                 {data.map((time, index) => {
 
                 return <tr>
-                    <td>{time.nome}</td>
-                    <td>{time.identificador}</td>
+                    <td>{time.id}</td>
+                    <td>{time.idPartida}</td>
+                    <td>{time.dataAposta}</td>
+                    <td>{time.resultado}</td>
+                    <td>{time.valor}</td>
+                    <td>{time.status}</td>
+
                 </tr>
 
                 })}
@@ -48,4 +53,4 @@ function ListaTime() {
 
 }
 
-export default ListaTime;
+export default ListarAposta;
